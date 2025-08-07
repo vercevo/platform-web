@@ -1,11 +1,11 @@
-"use client";
 
 import ValheimServerStatus from "../components/valheim-server-status";
 
-export default function Page() {
+export default async function Page() {
+  const backendUrl = process.env.NEXT_PUBLIC_VALHEIM_BACKEND_URL!;
   return (
     <div>
-      <ValheimServerStatus />
+      <ValheimServerStatus backendUrl={backendUrl} />
     </div>
   );
 }

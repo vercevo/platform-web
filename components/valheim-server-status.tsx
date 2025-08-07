@@ -12,7 +12,7 @@ interface Player {
   duration: number
 }
 
-interface ServerData {
+ interface ServerData {
   last_status_update: string
   error: string | null
   server_name: string
@@ -28,7 +28,7 @@ interface ServerData {
   players: Player[]
 }
 
-export default function ValheimServerStatus() {
+export default function ValheimServerStatus({ backendUrl }: { backendUrl: string }) {
   const [serverData, setServerData] = useState<ServerData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -36,7 +36,7 @@ export default function ValheimServerStatus() {
   useEffect(() => {
     const fetchServerData = async () => {
       try {
-        const response = await fetch(process.env.NEXT_PUBLIC_VALHEIM_BACKEND_URL!)
+        const response = await fetch(backendUrl)
         if (!response.ok) {
           throw new Error('Failed to fetch server data')
         }
