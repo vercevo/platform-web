@@ -15,6 +15,7 @@ export async function GET() {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
+    console.error("Error fetching server data:", error);
     return new Response("An error occurred while fetching server data", {
       status: 500,
     });
