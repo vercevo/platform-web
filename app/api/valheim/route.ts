@@ -1,10 +1,10 @@
 export async function GET() {
-  const backendUrl = process.env.NEXT_PUBLIC_VALHEIM_BACKEND_URL;
-  if (!backendUrl) {
+  const endpoint = process.env.VALHEIM_STATUS_ENDPOINT;
+  if (!endpoint) {
     return new Response("Backend URL is not configured", { status: 500 });
   }
   try {
-    const response = await fetch(backendUrl);
+    const response = await fetch(endpoint);
     if (!response.ok) {
       return new Response("Failed to fetch server data", {
         status: response.status,
