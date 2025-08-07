@@ -1,4 +1,5 @@
 
+export const dynamic = 'force-dynamic';
 import ValheimServerStatus from "../components/valheim-server-status";
 
 export default async function Page() {
